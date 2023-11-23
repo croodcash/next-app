@@ -1,8 +1,82 @@
+"use client";
 import Image from 'next/image'
+import DocViewer, { DocViewerRenderers } from '@cyntler/react-doc-viewer';
+// import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import { headers } from '@/next.config';
+// import { Black_Han_Sans } from 'next/font/google';
+// import dynamic from 'next/dynamic'
+
+// const DynamicComponentWithNoSSR = dynamic(
+//   () => import('./componentrender'),
+//   { ssr: false }
+// )
 
 export default function Home() {
+  //const [docs, setDocs] = useState([]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const response = await axios.get(
+  //       'https://unec.edu.az/application/uploads/2014/12/pdf-sample.pdf',
+  //       headers:{ "Access-Control-Allow-Origin" : "*"}
+  //       {
+  //         responseType: 'blob', // Important
+  //       }
+  //     );
+
+  //     const blob = new Blob([response.data], { type: 'application/pdf' });
+  //     const blobUrl = URL.createObjectURL(blob);
+
+  //     setDocs([{ uri: blobUrl }]);
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  const docs = [
+    // { uri: "/api/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" ,
+    //   fileType: "pdf"
+    // },
+    // { uri: "/api/images/4/47/Extlst-test.pptx" ,
+    //   fileType: "pptx"
+    // },
+    // { uri: "/api/faculty/john/classroomrespolicy1.docx" ,
+    //   fileType: "docx"
+    // },
+    // },
+    { uri: "/pdf-sample.pdf" ,
+    fileType: "pdf"
+  },
+  { uri: "https://www.lehman.edu/faculty/john/classroomrespolicy1.docx" ,
+    fileType: "docx"
+  },
+  { uri: "/Extlst-test.pptx" ,
+  fileType: "pptx"
+},
+   
+    // { 
+    //   uri: require(`/Users/ajaib/Salim/work/^Private/next-app/public/pdf-sample.pdf`),
+    //   fileData : require(`/Users/ajaib/Salim/work/^Private/next-app/public/pdf-sample.pdf`),
+    //   fileType: "pdf" }
+  ];
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
+       <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            tesss
+          </p>
+
+          <DocViewer pluginRenderers={DocViewerRenderers} documents={docs}
+           style={{width: 500, height: 500, color: 'whti', backgroundColor: 'rgba(52, 52, 52, 0.8)'}}
+           config={{
+            header: {
+             disableHeader: false,
+             disableFileName: false,
+             retainURLParams: false
+            }
+           }} 
+           />
+        
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -38,7 +112,9 @@ export default function Home() {
           priority
         />
       </div>
-
+      
+      
+     
       <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
         <a
           href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
@@ -86,6 +162,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
+          
           <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
             Explore starter templates for Next.js.
           </p>
